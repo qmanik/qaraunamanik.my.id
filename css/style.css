@@ -42,7 +42,7 @@ a{
     right: 9px;
     cursor: pointer;
     z-index: 1000;
-    max-width: 150px;
+    width: 150px;
 }
 .container-box{
     -webkit-box-shadow: 6px 6px 22px -1px rgba(128, 128, 128, 0.81);
