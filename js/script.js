@@ -85,7 +85,7 @@ function getRandomColor(brightness) {
     return randomColor1;
 
 }
-
+<!--
 document.querySelector("#date_").innerHTML =(new Date()).getFullYear();
 // document.querySelector(".footer").style.marginTop = (window.innerHeight/2) - 250 +"px";
 // console.log(window.innerHeight)
@@ -144,6 +144,53 @@ var calculateAge = () => {
   }, 1000);
 }
 
+
+calculateAge();
+-->
+
+// Tampilkan tahun saat ini
+document.querySelector("#date_").innerHTML = (new Date()).getFullYear();
+
+// Helper: Tambah 0 di depan angka jika < 10
+function pad(d) {
+  return (d < 10) ? '0' + d.toString() : d.toString();
+}
+
+// Fungsi utama: Menghitung umur
+function calculateAge() {
+  const birth_date = new Date("June 11, 2000"); // Ganti sesuai tanggal lahir
+
+  setInterval(() => {
+    const now = new Date();
+    let diff = now - birth_date; // Selisih waktu dalam milidetik
+
+    let seconds = Math.floor(diff / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+
+    // Hitung tahun (dengan rata-rata tahun kabisat)
+    let years = Math.floor(days / 365.25);
+    days -= Math.floor(years * 365.25);
+
+    // Hitung bulan (dengan rata-rata panjang bulan)
+    let months = Math.floor(days / 30.44);
+    days = Math.floor(days % 30.44);
+
+    // Koreksi waktu harian
+    hours = hours % 24;
+    minutes = minutes % 60;
+    seconds = seconds % 60;
+
+    // Tampilkan ke HTML
+    document.querySelector('#meInTheWorld .years').innerHTML = pad(years);
+    document.querySelector('#meInTheWorld .months').innerHTML = pad(months);
+    document.querySelector('#meInTheWorld .days').innerHTML = pad(days);
+    document.querySelector('#meInTheWorld .hours').innerHTML = pad(hours);
+    document.querySelector('#meInTheWorld .minutes').innerHTML = pad(minutes);
+    document.querySelector('#meInTheWorld .seconds').innerHTML = pad(seconds);
+  }, 1000);
+}
 
 calculateAge();
 
