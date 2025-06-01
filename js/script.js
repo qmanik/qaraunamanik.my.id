@@ -85,68 +85,71 @@ function getRandomColor(brightness) {
     return randomColor1;
 
 }
-<!--
-document.querySelector("#date_").innerHTML =(new Date()).getFullYear();
-// document.querySelector(".footer").style.marginTop = (window.innerHeight/2) - 250 +"px";
-// console.log(window.innerHeight)
 
 
-function pad(d) {
-  return (d < 10) ? '0' + d.toString() : d.toString();
-}
 
-var calculateAge = () => {
-  let age_year = document.querySelector('#meInTheWorld .years');
-  let age_months = document.querySelector('#meInTheWorld .months');
-  let age_days = document.querySelector('#meInTheWorld .days');
-  let age_hours = document.querySelector('#meInTheWorld .hours');
-  let age_minutes = document.querySelector('#meInTheWorld .minutes');
-  let age_seconds = document.querySelector('#meInTheWorld .seconds');
-  let birth_date = new Date('June 11, 2000'); // Ubah format string untuk membuat objek Date dengan benar
-  setInterval(function(){
-    var current_date = new Date();
-    let years = current_date.getFullYear() - birth_date.getFullYear();
-    let months = current_date.getMonth() - birth_date.getMonth();
-    let days = current_date.getDate() - birth_date.getDate();
-    let hours = current_date.getHours() - birth_date.getHours();
-    let minutes = current_date.getMinutes() - birth_date.getMinutes();
-    let seconds = current_date.getSeconds() - birth_date.getSeconds();
-
-    // Handle jika months, days, hours, minutes, atau seconds negatif
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-    if (days < 0) {
-      months--;
-      let tempDate = new Date(current_date.getFullYear(), current_date.getMonth(), 0);
-      days += tempDate.getDate();
-    }
-    if (hours < 0) {
-      days--;
-      hours += 24;
-    }
-    if (minutes < 0) {
-      hours--;
-      minutes += 60;
-    }
-    if (seconds < 0) {
-      minutes--;
-      seconds += 60;
-    }
-
-    age_year.innerHTML = pad(years);
-    age_months.innerHTML = pad(months);
-    age_days.innerHTML = pad(days);
-    age_hours.innerHTML = pad(hours);
-    age_minutes.innerHTML = pad(minutes);
-    age_seconds.innerHTML = pad(seconds);
-  }, 1000);
-}
+// document.querySelector("#date_").innerHTML =(new Date()).getFullYear();
+// // document.querySelector(".footer").style.marginTop = (window.innerHeight/2) - 250 +"px";
+// // console.log(window.innerHeight)
 
 
-calculateAge();
--->
+// function pad(d) {
+//   return (d < 10) ? '0' + d.toString() : d.toString();
+// }
+
+// var calculateAge = () => {
+//   let age_year = document.querySelector('#meInTheWorld .years');
+//   let age_months = document.querySelector('#meInTheWorld .months');
+//   let age_days = document.querySelector('#meInTheWorld .days');
+//   let age_hours = document.querySelector('#meInTheWorld .hours');
+//   let age_minutes = document.querySelector('#meInTheWorld .minutes');
+//   let age_seconds = document.querySelector('#meInTheWorld .seconds');
+//   let birth_date = new Date('June 11, 2000'); // Ubah format string untuk membuat objek Date dengan benar
+//   setInterval(function(){
+//     var current_date = new Date();
+//     let years = current_date.getFullYear() - birth_date.getFullYear();
+//     let months = current_date.getMonth() - birth_date.getMonth();
+//     let days = current_date.getDate() - birth_date.getDate();
+//     let hours = current_date.getHours() - birth_date.getHours();
+//     let minutes = current_date.getMinutes() - birth_date.getMinutes();
+//     let seconds = current_date.getSeconds() - birth_date.getSeconds();
+
+//     // Handle jika months, days, hours, minutes, atau seconds negatif
+//     if (months < 0) {
+//       years--;
+//       months += 12;
+//     }
+//     if (days < 0) {
+//       months--;
+//       let tempDate = new Date(current_date.getFullYear(), current_date.getMonth(), 0);
+//       days += tempDate.getDate();
+//     }
+//     if (hours < 0) {
+//       days--;
+//       hours += 24;
+//     }
+//     if (minutes < 0) {
+//       hours--;
+//       minutes += 60;
+//     }
+//     if (seconds < 0) {
+//       minutes--;
+//       seconds += 60;
+//     }
+
+//     age_year.innerHTML = pad(years);
+//     age_months.innerHTML = pad(months);
+//     age_days.innerHTML = pad(days);
+//     age_hours.innerHTML = pad(hours);
+//     age_minutes.innerHTML = pad(minutes);
+//     age_seconds.innerHTML = pad(seconds);
+//   }, 1000);
+// }
+
+
+// calculateAge();
+
+
 
 // Tampilkan tahun saat ini
 document.querySelector("#date_").innerHTML = (new Date()).getFullYear();
@@ -158,7 +161,7 @@ function pad(d) {
 
 // Fungsi utama: Menghitung umur
 function calculateAge() {
-  const birth_date = new Date("June 11, 2000"); // Ganti sesuai tanggal lahir
+  const birth_date = new Date("June 11, 2000"); 
 
   setInterval(() => {
     const now = new Date();
@@ -181,8 +184,7 @@ function calculateAge() {
     hours = hours % 24;
     minutes = minutes % 60;
     seconds = seconds % 60;
-
-    // Tampilkan ke HTML
+ 
     document.querySelector('#meInTheWorld .years').innerHTML = pad(years);
     document.querySelector('#meInTheWorld .months').innerHTML = pad(months);
     document.querySelector('#meInTheWorld .days').innerHTML = pad(days);
@@ -193,6 +195,7 @@ function calculateAge() {
 }
 
 calculateAge();
+
 
 
 //init object to store window properties
