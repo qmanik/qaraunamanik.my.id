@@ -22,18 +22,24 @@ var randomWidth = () => {
     document.querySelector(".container-box").style.width = x + "%";
     document.querySelector(".container-box").setAttribute("data-value", x + "%");
   }
+  // Warna akan berubah setiap kali fungsi ini dijalankan oleh interval
+  BODY.style.background = getRandomColor(98);
 };
 
 var getRndInteger = (min, max) => {
+  // Pastikan max lebih besar dari min untuk menghindari loop tak terbatas atau error
+  if (max <= min) {
+      max = min + 1;
+  }
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+// Panggil sekali di awal agar tidak kosong
 randomWidth();
 
 var interval = setInterval(() => {
   randomWidth();
 }, NABIZ);
-
 
 function detectMob() {
   return window.innerWidth <= 1000 && window.innerHeight <= 1000;
@@ -46,47 +52,51 @@ function getRandomColor(brightness) {
     var s = n.toString(16);
     return (s.length == 1) ? '0' + s : s;
   }
-  var randomColor1 = '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness),
-    randomColor2 = '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
-  if (brightness === 50) {
-    return randomColor2;
-  } else
-    return randomColor1;
+  return '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
 }
 
 // Tampilkan tahun saat ini
 document.querySelector("#date_").innerHTML = (new Date()).getFullYear();
 
-// Helper: Tambah 0 di depan angka jika < 10
 function pad(d) {
   return (d < 10) ? '0' + d.toString() : d.toString();
 }
 
-// Fungsi utama: Menghitung umur
+// Fungsi utama: Menghitung umur (Versi Akurat)
 function calculateAge() {
-  const birth_date = new Date("June 11, 2000");
+  const birthDate = new Date("2000-06-11T00:00:00");
 
   setInterval(() => {
     const now = new Date();
-    let diff = now - birth_date; // Selisih waktu dalam milidetik
 
-    let seconds = Math.floor(diff / 1000);
-    let minutes = Math.floor(seconds / 60);
-    let hours = Math.floor(minutes / 60);
-    let days = Math.floor(hours / 24);
+    let years = now.getFullYear() - birthDate.getFullYear();
+    let months = now.getMonth() - birthDate.getMonth();
+    let days = now.getDate() - birthDate.getDate();
+    let hours = now.getHours() - birthDate.getHours();
+    let minutes = now.getMinutes() - birthDate.getMinutes();
+    let seconds = now.getSeconds() - birthDate.getSeconds();
 
-    // Hitung tahun (dengan rata-rata tahun kabisat)
-    let years = Math.floor(days / 365.25);
-    days -= Math.floor(years * 365.25);
-
-    // Hitung bulan (dengan rata-rata panjang bulan)
-    let months = Math.floor(days / 30.44);
-    days = Math.floor(days % 30.44);
-
-    // Koreksi waktu harian
-    hours = hours % 24;
-    minutes = minutes % 60;
-    seconds = seconds % 60;
+    if (seconds < 0) {
+      seconds += 60;
+      minutes--;
+    }
+    if (minutes < 0) {
+      minutes += 60;
+      hours--;
+    }
+    if (hours < 0) {
+      hours += 24;
+      days--;
+    }
+    if (days < 0) {
+      const lastDayOfPreviousMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+      days += lastDayOfPreviousMonth;
+      months--;
+    }
+    if (months < 0) {
+      months += 12;
+      years--;
+    }
 
     document.querySelector('#meInTheWorld .years').innerHTML = pad(years);
     document.querySelector('#meInTheWorld .months').innerHTML = pad(months);
@@ -94,24 +104,23 @@ function calculateAge() {
     document.querySelector('#meInTheWorld .hours').innerHTML = pad(hours);
     document.querySelector('#meInTheWorld .minutes').innerHTML = pad(minutes);
     document.querySelector('#meInTheWorld .seconds').innerHTML = pad(seconds);
+    
+    AGE = years;
   }, 1000);
 }
 
+// Panggil fungsi kalkulasi umur
 calculateAge();
 
-// Event listener untuk mengubah warna latar belakang saat ukuran layar berubah
+// Event listener untuk mengubah warna saat JENDELA BROWSER diubah ukurannya
 window.addEventListener("resize", function() {
-  // Cek jika ukuran luar jendela berubah
   if (window.outerWidth !== windowSize.w || window.outerHeight !== windowSize.h) {
-    windowSize.w = window.outerWidth; // update object
+    windowSize.w = window.outerWidth;
     windowSize.h = window.outerHeight;
     windowSize.iw = window.innerWidth;
     windowSize.ih = window.innerHeight;
     BODY.style.background = getRandomColor(98);
-
-  }
-  // Cek jika ukuran konten di dalam jendela berubah (misalnya saat membuka DevTools)
-  else if (window.innerWidth + window.innerWidth * .05 < windowSize.iw ||
+  } else if (window.innerWidth + window.innerWidth * .05 < windowSize.iw ||
     window.innerWidth - window.innerWidth * .05 > windowSize.iw) {
     windowSize.iw = window.innerWidth;
     BODY.style.background = getRandomColor(98);
