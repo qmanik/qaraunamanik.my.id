@@ -111,10 +111,6 @@ header {
     position: absolute;
     bottom: -17px;
     left: 4px;
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5em;
 }
 #meInTheWorld .years{font-size: xx-large;font-weight: 800;width: fit-content;color: white;background: black;padding: 0px 4px;}
 #meInTheWorld .months{font-size: x-large;font-weight: 600;}
