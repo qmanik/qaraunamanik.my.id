@@ -130,20 +130,17 @@ header {
 /* === MEDIA QUERY UNTUK MOBILE === */
 /* ======================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     .container-box {
         margin: 32% auto !important;
     }
-    
-    /* Tata letak vertikal untuk header di mobile */
     .hello-myname {
-        flex-direction: column; /* Mengubah arah flex menjadi vertikal */
-        align-items: flex-start; /* Semua item rata kiri */
+        flex-direction: column; 
+        align-items: flex-start; 
+        text-align: start;
         padding: 10px 15px !important;
-        gap: 0; /* Hapus spasi antar elemen saat vertikal */
+        gap: 0; 
     }
-
-    /* Penyesuaian ukuran font agar proporsional di mobile */
     .hello-myname .hi {
         font-size: 22px !important;
     }
