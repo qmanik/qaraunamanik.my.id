@@ -46,21 +46,19 @@ a {
 
 header {
     margin-bottom: 10px;
-    /* Kita pusatkan header, bukan text-align, agar flexbox bekerja dengan baik */
     display: flex;
     justify-content: center;
 }
 
 .hello-myname {
-    /* Menggunakan display: inline-flex untuk membuatnya fleksibel tapi tetap inline */
     display: inline-flex;
-    flex-wrap: wrap; /* Izinkan wrapping jika benar-benar diperlukan */
-    align-items: baseline; /* Menyejajarkan teks berdasarkan baseline-nya */
-    gap: 0.5em; /* Memberi sedikit spasi antar elemen */
+    flex-wrap: wrap; 
+    align-items: baseline; 
+    gap: 0.5em;
     
     box-shadow: 3px 3px 6px -1px rgb(148 148 148 / 50%);
     background: white;
-    padding: 8px 23px; /* Padding sedikit lebih besar untuk estetika */
+    padding: 8px 23px;
     width: fit-content;
 }
 
@@ -74,9 +72,8 @@ header {
 
 .hello-myname .name {
     font-size: 32px;
-    /* h1 adalah block-level, tak perlu display: inline lagi karena ada flexbox */
     display: inline;
-    margin: 0; /* Hapus margin default dari h1 */
+    margin: 0; 
 }
 
 /* ======================================= */
@@ -142,16 +139,11 @@ header {
         gap: 0; 
     }
     .hello-myname .hi {
-        font-size: 22px !important;
+        font-size: 20px !important;
     }
-
-    .hello-myname .this-is {
-        font-size: 18px !important;
-        line-height: 1; /* Merapatkan jarak baris */
-    }
-
+    
     .hello-myname .name {
-        font-size: 26px !important;
+        font-size: 24px !important;
         line-height: 1.2;
     }
 
