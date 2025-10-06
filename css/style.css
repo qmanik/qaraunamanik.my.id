@@ -149,6 +149,7 @@ header {
 
     .current-title {
         padding: 2px 4px;
+        font-size: 18px;
     }
 
     #meInTheWorld {
