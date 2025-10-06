@@ -141,7 +141,9 @@ header {
     .hello-myname .hi {
         font-size: 19px !important;
     }
-    
+    #socil-icons .iconi{
+        font-size: 26px0
+    }
     .hello-myname .name {
         font-size: 22px !important;
         line-height: 1.2;
@@ -151,7 +153,7 @@ header {
         padding: 2px 4px;
         font-size: 18px;
     }
-
+    
     #meInTheWorld {
         position: absolute;
         bottom: -94px !important;
