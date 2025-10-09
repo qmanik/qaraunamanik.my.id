@@ -64,6 +64,7 @@ header {
 
 .hello-myname .hi {
     font-size: 28px;
+    padding-end:12px;
 }
 
 .hello-myname .this-is {
@@ -140,6 +141,7 @@ header {
     }
     .hello-myname .hi {
         font-size: 19px !important;
+        padding-end: 12px;
     }
     #socil-icons .iconi{
         font-size: 26px
